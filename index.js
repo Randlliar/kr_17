@@ -12,20 +12,17 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * max) + min;
 }
 
-
 workersArray[getRandomInt(0, workersArray.length)].rate = getRandomInt(1000, 10000);
 workersArray[getRandomInt(0, workersArray.length)].rate = getRandomInt(1000, 10000);
 workersArray[getRandomInt(0, workersArray.length)].rate = getRandomInt(1000, 10000);
 
-console.log(workersArray)
-
-workersArray[0].addDays(-2);
-workersArray[0].addDays(3);
-workersArray[0].addDays(50);
 
 for (let i = 0; i < workersArray.length; i++) {
-  console.log(workersArray[i].getFullName() + ' ' +  workersArray[i].getSalary())
+  workersArray[i].addDays(getRandomInt(1,30));
+  console.log(workersArray[i].getFullName() + ' ' +  workersArray[i].getSalary());
+  console.log(workersArray[i])
 }
+
 
 Worker.whoWorkedMore(...workersArray);
 Worker.whoIsYounger(...workersArray);

@@ -6,11 +6,9 @@ class Worker extends Person {
   #rate = 1000;
   #days = 0;
 
-  constructor(name, lastName, birthday, position, rate, days) {
+  constructor(name, lastName, birthday, position) {
     super(name, lastName, birthday)
     this.position = position;
-    this.rate = rate;
-    this.#days = days;
   }
 
   getLog() {
@@ -32,7 +30,7 @@ class Worker extends Person {
   addDays(days) {
     let date = new Date();
     let lastDayDate = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-    if (lastDayDate > this.#days && this.#days > 0) {
+    if (lastDayDate >= this.#days + days && days > 0) {
       this.#days += days;
     } else {
       throw new Error();
@@ -41,7 +39,7 @@ class Worker extends Person {
 
   getSalary() {
     let date = new Date().getMonth();
-    let currentData = new Date(super.birthday).getMonth();
+    let currentData = new Date(this.birthday).getMonth();
     const salary = this.rate * this.#days;
     if (date === currentData) {
       return 'Зарплата: ' + Math.round(salary * 0.1 + salary) + ' рублей' ;
